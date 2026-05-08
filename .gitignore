@@ -1,0 +1,8 @@
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+*.h5
+*.tflite
+.ipynb_checkpoints/
+
