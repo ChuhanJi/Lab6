@@ -156,7 +156,7 @@ Before you start, think about
 1. how many power traces should be measured per class. 
 2. how to handle noises in measurements
 
-3. Use the provided PPK to measure the power trace of your deployed speaker identification model at inference time. Document your power trace and the groudtruth class. 
+3. Use the provided [PPK II](https://docs.nordicsemi.com/bundle/ug_ppk2/page/UG/ppk/PPK_user_guide_Intro.html) to measure the power trace of your deployed speaker identification model at inference time. Document your power trace and the groudtruth class. 
 4. Propose a method to classify power traces to speaker identities.
 5. Test your method in step 2 on a held-out dataset.
 6. Report your speaker identity disclosure performance.
