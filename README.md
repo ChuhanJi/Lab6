@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/GEL4nELR)
 # TECHIN 515 – Lab 6: Speaker Identification on the Edge
 
 You will build a speaker identification system that runs on a microcontroller using an I2S MEMS microphone. The system must distinguish between enrolled speakers and reject unknown ones. You will then evaluate your system's trade-offs through systematic testing and ablation studies.
