@@ -63,20 +63,30 @@ static int get_signal_data(size_t offset, size_t length, float *out_ptr) {
 }
 
 // ── LED indication ────────────────────────────────────────────────────────────
-static void led_indicate(bool is_unknown) {
+static void led_indicate(const char *label, bool is_unknown) {
     if (is_unknown) {
-        // Unknown: 5 rapid flashes
-        for (int i = 0; i < 5; i++) {
+        // Unknown: 3 rapid short flashes
+        for (int i = 0; i < 3; i++) {
             digitalWrite(LED_PIN, HIGH);
             delay(80);
             digitalWrite(LED_PIN, LOW);
             delay(80);
         }
     } else {
-        // Enrolled: solid 1 second
-        digitalWrite(LED_PIN, HIGH);
-        delay(1000);
-        digitalWrite(LED_PIN, LOW);
+        // Enrolled: blink N times (S1=1, S2=2, ..., S5=5)
+        int count = 0;
+        if      (strcmp(label, "S1") == 0) count = 1;
+        else if (strcmp(label, "S2") == 0) count = 2;
+        else if (strcmp(label, "S3") == 0) count = 3;
+        else if (strcmp(label, "S4") == 0) count = 4;
+        else if (strcmp(label, "S5") == 0) count = 5;
+
+        for (int i = 0; i < count; i++) {
+            digitalWrite(LED_PIN, HIGH);
+            delay(400);
+            digitalWrite(LED_PIN, LOW);
+            delay(300);
+        }
     }
 }
 
@@ -133,7 +143,7 @@ void loop() {
     const char *output_label = is_unknown ? "Unknown" : predicted;
 
     // 5. LED indication
-    led_indicate(is_unknown);
+    led_indicate(predicted, is_unknown);
 
     unsigned long t_total = millis() - t_start;
 
